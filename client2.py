@@ -1,3 +1,6 @@
+# Client ard server send and receive forever until both of them type 'q'
+# The time also being record everytime they send/receive
+
 import socket
 from datetime import datetime
 HOST= "172.20.10.4"
