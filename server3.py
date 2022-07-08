@@ -16,7 +16,7 @@ while True:
     print(len(data_decode))
     if not chunk :
         break
-        #chunk_decode = chunk.decode('utf-8')
+        #chunk_decode = chunk.decode('utf-8' )
     
 #chunk_decode = chunk.decode('utf-8')
 #print(chunk_decode)
