@@ -10,8 +10,14 @@ data_decode = data.decode('utf-8')
 print(data_decode)
 maxsize = 1024
 fragments = []
-while not done:
+while True:
     chunk = client.recv(maxsize)
-    if not chunk:
-        break
     fragments.append(chunk)
+    print(len(data_decode))
+    if not chunk :
+        break
+        #chunk_decode = chunk.decode('utf-8')
+    
+#chunk_decode = chunk.decode('utf-8')
+#print(chunk_decode)
+print(fragments) 
