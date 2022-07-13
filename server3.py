@@ -7,17 +7,20 @@ s.listen(5)
 client, addr = s.accept()
 data = client.recv(1024)
 data_decode = data.decode('utf-8')
-print(data_decode)
+print(data_decode) #data receive all include data and large data from client
 maxsize = 1024
 fragments = []
 while True:
     chunk = client.recv(maxsize)
-    fragments.append(chunk)
+    #fragments.append(chunk)
     print(len(data_decode))
     if not chunk :
         break
+    fragments.append(chunk)
+    print(len(data_decode))
         #chunk_decode = chunk.decode('utf-8' )
     
 #chunk_decode = chunk.decode('utf-8')
 #print(chunk_decode)
 print(fragments) 
+print(len(fragments))
