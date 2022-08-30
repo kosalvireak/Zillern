@@ -8,8 +8,8 @@ print("Starting the client at: ", datetime.now())
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)                    #start socket
 s.connect((HOST,PORT))
 print("""q : for close connection
-         on : for turn a light on
-         off: for turn a light off
+on : for turn a light on
+off: for turn a light off
         """)                                                  #connect to server
 while True:
     message_to_server = input("Enter message to server: ")              #input message

@@ -10,8 +10,8 @@ print("Waiting For The Incoming Connection from client")
 sock.listen(5) #listening client
 client, addr = sock.accept()  #client connect
 print("""q : for close connection
-         on : for turn the light on
-         off: for turn the light off
+on : for turn the light on
+off: for turn the light off
         """)
 while True:
     data = client.recv(max_size)   #receive from client
