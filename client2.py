@@ -12,12 +12,9 @@ client.connect((HOST, PORT))
 print("""q : for close connection
 on : for turn a light on
 off: for turn a light off
-        """)  # connect to server
-while True:
-    # message_to_server = input("Enter message to server: ")              #input message
-    # message_to_server_encode = message_to_server.encode('utf-8')        #encode input message
-    # s.send(message_to_server_encode)                                    #send to server
-    data = client.recv(max_size)  # receive from server
+        """)  
+while True:                        
+    data = client.recv(max_size) 
     if data.decode('utf-8') == 'on':
         # led_server.on()
         print("light is on")
@@ -25,11 +22,12 @@ while True:
         # led_server.off()
         print("light is off")
     print("At ", datetime.now(), "server replied with: ",
-          data.decode('utf-8'))  # print it out
+          data.decode('utf-8'))  
     if data.decode('utf-8') == 'q':
         break
 
-f = open("/home/pi/Desktop/Light sensor.txt", "r")
+f = open("Light sensor.txt", "r")
+# f = open("/home/pi/Desktop/Light sensor.txt", "r")
 data = f.read()
 client.send("Light sensor.txt".encode(FORMAT))
 msg = client.recv(max_size).decode(FORMAT)
@@ -39,3 +37,4 @@ msg = client.recv(max_size).decode(FORMAT)
 print(f"server: {msg}")
 f.close()
 client.close()
+
