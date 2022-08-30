@@ -1,10 +1,10 @@
-
 import socket
+#from gpiozero import LED
 from datetime import datetime
-HOST = "172.20.10.4"
+HOST = "172.16.0.188"
 PORT = 6789
 max_size = 1024
-
+#led_server = LED(27)
 FORMAT = "utf-8"
 print("Starting the client at: ", datetime.now())
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # start socket
