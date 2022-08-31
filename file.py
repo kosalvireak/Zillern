@@ -14,25 +14,12 @@
 #     if content[i-1] == '':
 #         break
 
-import mysql.connector
 
-dataBase = mysql.connector.connect(
-
-    host="localhost",
-
-    user="root",
-
-    passwd="",
-
-    database="kosalvireak"
-)
-
-
-cursorObject = dataBase.cursor()
 f = open("Light sensor.txt","r")
+end_of_file = f.readline()
 for x in f:
     res = x.split()
-    sql = "INSERT INTO tbl_STUDENT (NAME, EMAIL) VALUES (%s, %s)"
     val = (str(res[0]), str(res[1]))
-    cursorObject.execute(sql, val)
-    dataBase.commit()
+    print(val)
+    if not end_of_file:
+        break

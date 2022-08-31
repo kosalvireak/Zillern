@@ -1,3 +1,4 @@
+import mysql.connector
 import socket
 from datetime import datetime
 HOST = socket.gethostbyname(socket.gethostname())
@@ -16,14 +17,10 @@ off: for turn the light off
         """)
 
 while True:
-    # data = client.recv(max_size)   #receive from client
-    # if data.decode('utf-8') == 'q': #decode message
-    #     break
-    #print("At ", datetime.now(),addr, " said: ", data.decode('utf-8'))
-    message_to_client = input("Enter message to client: ")  # input message
+    message_to_client = input("Enter message to client: ")
     message_to_client_encode = message_to_client.encode(
-        'utf-8')  # encode message
-    client.send(message_to_client_encode)  # send to client back
+        'utf-8')
+    client.send(message_to_client_encode)
     if message_to_client == 'q':
         break
 
@@ -32,26 +29,22 @@ while True:
     filename = client.recv(SIZE).decode(FORMAT)
     print(f"[RECV] Receiving the filename.")
 
-    file = open(filename, "a")
+    file = open(filename, "w")
     client.send("Filename received.".encode(FORMAT))
 
-    # Receiving the file data from the client. #
     data = client.recv(SIZE).decode(FORMAT)
     print(f"[RECV] Receiving the file data.")
     file.write(data)
     client.send("File data received".encode(FORMAT))
 
-    # Closing the file. #
     file.close()
 
-    # Closing the connection from the client. #
     client.close()
     print(f"[DISCONNECTED] {addr} disconnected.")
     break
 
 sock.close()
 
-import mysql.connector
 
 dataBase = mysql.connector.connect(
 
@@ -66,10 +59,13 @@ dataBase = mysql.connector.connect(
 
 
 cursorObject = dataBase.cursor()
-f = open("Light sensor.txt","r")
+f = open("Light sensor.txt", "r")
+end_of_file = f.readline()
 for x in f:
     res = x.split()
     sql = "INSERT INTO tbl_STUDENT (NAME, EMAIL) VALUES (%s, %s)"
     val = (str(res[0]), str(res[1]))
     cursorObject.execute(sql, val)
     dataBase.commit()
+    if not end_of_file:
+        break
