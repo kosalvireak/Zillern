@@ -5,15 +5,16 @@ PORT = 6789
 SIZE = 1024
 FORMAT = "utf-8"
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.bind((HOST, PORT))  # open server
+sock.bind((HOST, PORT))
 print('Starting The Server at: ', datetime.now())
 print("Waiting For The Incoming Connection from client")
-sock.listen(5)  # listening client
-client, addr = sock.accept()  # client connect
+sock.listen(5)
+client, addr = sock.accept()
 print("""q : for close connection
 on : for turn the light on
 off: for turn the light off
         """)
+
 while True:
     # data = client.recv(max_size)   #receive from client
     # if data.decode('utf-8') == 'q': #decode message

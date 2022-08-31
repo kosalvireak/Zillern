@@ -1,6 +1,6 @@
 import socket
 from datetime import datetime
-HOST= "172.20.10.4"
+HOST= "172.16.0.188"
 PORT = 6789
 max_size=1024
 sock=socket.socket(socket.AF_INET, socket.SOCK_STREAM) 

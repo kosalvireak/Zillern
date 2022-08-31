@@ -1,6 +1,6 @@
 import socket
 from datetime import datetime
-HOST= "172.16.2.87"
+HOST= "172.16.0.188"
 PORT = 6789
 max_size=1024
 print("Starting the client at: ", datetime.now())

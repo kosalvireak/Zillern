@@ -3,7 +3,6 @@ import time
 import socket
 from gpiozero import LED
 from datetime import datetime
-from threading import Thread
 HOST = "172.16.0.188"
 PORT = 6789
 ADDR = (HOST,PORT)
@@ -38,7 +37,7 @@ def fun1():
         if data.decode('utf-8') == 'q':
             break
 def fun2():
-    while True:
+    for i in range(0,30):
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
         time.sleep(1)
@@ -53,11 +52,8 @@ def fun2():
             print(light)
             led.off()
 
-t1 = Thread(target=fun1)
-t2 = Thread(target=fun2)
-
-t1.start()
-t2.start()
+fun2()
+fun1()
 
 # while True:
 #     now = datetime.now()
